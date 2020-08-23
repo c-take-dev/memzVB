@@ -1,4 +1,4 @@
-﻿Imports System.Drawing
+Imports System.Drawing
 Imports System.Windows.Forms
 
 Public Class Form1
@@ -41,35 +41,36 @@ Public Class Form1
     Dim x As Integer
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
 
-        Me.TopMost = True
 
         Dim mouseX As Integer = System.Windows.Forms.Cursor.Position.X
         Dim mouseY As Integer = System.Windows.Forms.Cursor.Position.Y
 
         mainGraphics.DrawImage(PlayerImage, mouseX, mouseY)
 
-        If Rnd() * 10 < 5 Then
+        If Rnd() * 10 < 1 Then
 
-            If Rnd() * 10 < 5 Then
+            If Rnd() * 100 < 40 Then
 
                 PlayerImage = My.Resources.win7_ico_imageres_dll_080.ToBitmap()
 
             End If
 
-            If Rnd() * 20 < 5 Then
+            If Rnd() * 5 < 1 Then
 
+                Me.TopMost = True
                 Dim f2 = New Form2
                 f2.Show()
 
             End If
         End If
 
-        mainGraphics.DrawImage(PlayerImage, Rnd() * Screen.PrimaryScreen.Bounds.Width, Rnd() * Screen.PrimaryScreen.Bounds.Height)
-
+        If Rnd() * 10 < 5 Then
+            mainGraphics.DrawImage(PlayerImage, Rnd() * Screen.PrimaryScreen.Bounds.Width, Rnd() * Screen.PrimaryScreen.Bounds.Height)
+        End If
 
         PlayerImage = My.Resources.win7_ico_imageres_dll_094.ToBitmap()
 
-        If Rnd() * 2000 < 5 Then
+        If Rnd() * 2000 < 15 Then
             Dim canvas As New Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height)
 
             Dim g As Graphics = Graphics.FromImage(canvas)
